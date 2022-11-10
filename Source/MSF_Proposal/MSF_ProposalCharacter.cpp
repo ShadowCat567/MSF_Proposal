@@ -276,6 +276,11 @@ void AMSF_ProposalCharacter::MoveRight(float Value)
 		// add movement in that direction
 		AddMovementInput(GetActorRightVector(), Value);
 	}
+	else
+	{
+		FVector drift = FVector(0.0f, -1.0f, 0.0f);
+		AddMovementInput(drift, 0.5f);
+	}
 }
 
 void AMSF_ProposalCharacter::TurnAtRate(float Rate)
