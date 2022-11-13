@@ -279,7 +279,11 @@ void AMSF_ProposalCharacter::MoveRight(float Value)
 	else
 	{
 		FVector drift = FVector(0.0f, -1.0f, 0.0f);
-		AddMovementInput(drift, 0.5f);
+		//some kind of random number generator, based on that value you will be moving left or right
+		//also need some kind of timer in place before player starts to drift -- later on will tie this to alcohol
+
+
+		AddMovementInput(drift, 0.15f);
 	}
 }
 
