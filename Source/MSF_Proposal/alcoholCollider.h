@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "MSF_ProposalCharacter.h"
 #include "GameFramework/Actor.h"
 #include "alcoholCollider.generated.h"
 
@@ -20,6 +21,8 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+	AMSF_ProposalCharacter* player;
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 

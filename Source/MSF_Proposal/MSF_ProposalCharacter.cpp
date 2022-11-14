@@ -313,3 +313,8 @@ bool AMSF_ProposalCharacter::EnableTouchscreenMovement(class UInputComponent* Pl
 	
 	return false;
 }
+
+void AMSF_ProposalCharacter::IncreaseAlcoholContent()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Magenta, "Beverage obtained");
+}

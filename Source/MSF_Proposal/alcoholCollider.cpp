@@ -4,6 +4,7 @@
 #include "alcoholCollider.h"
 #include "Components/BoxComponent.h"
 #include "Engine/Engine.h"
+#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 
 // Sets default values
 AalcoholCollider::AalcoholCollider()
@@ -25,6 +26,7 @@ void AalcoholCollider::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	player = Cast<AMSF_ProposalCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 }
 
 // Called every frame
@@ -37,13 +39,17 @@ void AalcoholCollider::Tick(float DeltaTime)
 void AalcoholCollider::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, 
 	int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Cyan, "Overlap has begun");
+	//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Cyan, "Overlap has begun");
+	if (player && player == OtherActor)
+	{
+		player->IncreaseAlcoholContent();
+	}
 }
 
 
 void AalcoholCollider::OnOverlapEnd(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor,
 	class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, "Overlap has ended");
+	//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, "Overlap has ended");
 }
 
