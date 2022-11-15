@@ -43,6 +43,8 @@ void AalcoholCollider::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActo
 	if (player && player == OtherActor)
 	{
 		player->IncreaseAlcoholContent();
+		SetActorHiddenInGame(true);
+		SetActorEnableCollision(false);
 	}
 }
 
